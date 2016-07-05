@@ -8,14 +8,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.doulala.android.R;
+import com.doulala.android.base.model.DataManager_Base;
+import com.doulala.android.base.ui.Activity_UI_Base;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity_UI_Base
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -42,6 +43,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        DataManager_Base dm = new DataManager_Base(MainActivity.this);
+        dm.login();
+
     }
 
     @Override
