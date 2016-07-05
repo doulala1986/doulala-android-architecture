@@ -1,0 +1,53 @@
+ext {
+    androidCompileSdkVersion = 23
+    androidBuildToolsVersion = '23.0.2'
+    androidMinSdkVersion = 14
+    androidTargetSdkVersion = 23
+    supportLibraryVersion = '23.4.0'
+
+
+    libs = [
+            //supports
+            appCompat            : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            support              : "com.android.support:support-v4:$supportLibraryVersion",
+            multidex             : "com.android.support:multidex:1.0.0",
+            design               : "com.android.support:design:$supportLibraryVersion",
+            recyclerView         : "com.android.support:recyclerview-v7:$supportLibraryVersion",
+            percentView          : "com.android.support:percent:$supportLibraryVersion",
+
+
+            //architecture
+            rxjava               : "io.reactivex:rxjava:1.1.6",
+            rxandroid            : "io.reactivex:rxandroid:1.2.1",
+
+            butterknife_compiler : "com.jakewharton:butterknife:8.1.0",
+            butterknife_apt      : "com.jakewharton:butterknife-compiler:8.1.0",
+
+            gson                 : "com.google.code.gson:gson:2.7",
+
+            okhttp2              : "com.squareup.okhttp:okhttp:2.7.2",
+            okhttp3              : "com.squareup.okhttp3:okhttp:3.3.1",
+            okio                 : "com.squareup.okio:okio:1.8.0",
+
+            glide                : "com.github.bumptech.glide:glide:3.7.0",
+
+
+            dagger2_compiler     : "com.google.dagger:dagger:2.4",
+            dagger2_apt          : "com.google.dagger:dagger-compiler:2.4",
+
+            parceler_compiler    : "org.parceler:parceler-api:1.1.4",
+            parceler_apt         : "org.parceler:parceler:1.1.4",
+            //tools
+            leakcanary_debug     : 'com.squareup.leakcanary:leakcanary-android:1.4-beta2',
+            leakcanary_release   : 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2',
+            //ui
+            systembartint        : "com.readystatesoftware.systembartint:systembartint:1.0.3",
+            viewpagerindicator   : "com.viewpagerindicator:library:2.4.1@aar",
+
+            //function
+            zxing                :"com.google.zxing:core:3.2.1",
+
+
+
+    ]
+}
