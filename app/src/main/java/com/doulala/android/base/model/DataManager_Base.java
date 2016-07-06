@@ -33,5 +33,4 @@ public class DataManager_Base {
         valueStorageManager.set("user","liyao");
     }
 
-
 }

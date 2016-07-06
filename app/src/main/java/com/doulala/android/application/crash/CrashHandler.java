@@ -1,6 +1,8 @@
 package com.doulala.android.application.crash;
 
 import java.lang.Thread.UncaughtExceptionHandler;
+
+import com.doulala.android.BuildConfig;
 import com.doulala.android.application.DApplication;
 import android.content.Context;
 
@@ -39,7 +41,12 @@ public class CrashHandler implements UncaughtExceptionHandler {
 	 */
 	@Override
 	public void uncaughtException(Thread thread, Throwable ex) {
-		//ADD your logic
+
+		if(BuildConfig.DEBUG)
+		ex.printStackTrace();
+
+		//TODO 添加你的逻辑
+
 		android.os.Process.killProcess(android.os.Process.myPid());
 	}
 

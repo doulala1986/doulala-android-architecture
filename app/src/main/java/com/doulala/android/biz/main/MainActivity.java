@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.doulala.android.R;
 import com.doulala.android.base.model.DataManager_Base;
-import com.doulala.android.base.ui.Activity_UI_Base;
+import com.doulala.android.base.ui.activity.Activity_UI_Base;
 
 public class MainActivity extends Activity_UI_Base
         implements NavigationView.OnNavigationItemSelectedListener {

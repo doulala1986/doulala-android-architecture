@@ -28,17 +28,20 @@ public class DApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        //dagger inject
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(DApplication.this)).build();
-        appComponent.inject(DApplication.this);
-        //others
+        inject();
         initMemoryDetector();
         initError();
     }
 
+    //region DI
+    private void  inject(){
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(DApplication.this)).build();
+        appComponent.inject(DApplication.this);
+    }
     public AppComponent getAppComponent() {
         return appComponent;
     }
+    //endregion
 
     //region 处理内存泄露检测与内存泄露优化
     private void initMemoryDetector() {
@@ -47,7 +50,7 @@ public class DApplication extends MultiDexApplication {
     }
     //endregion
 
-    //region 初始化应用程序
+    //region 处理未捕获程序异常
     private CrashHandler crashHandler;
 
     private void initError() {
@@ -56,6 +59,5 @@ public class DApplication extends MultiDexApplication {
         crashHandler.init(DApplication.this);
     }
     //endregion
-
 
 }

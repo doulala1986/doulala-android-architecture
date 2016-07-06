@@ -15,7 +15,6 @@ import dagger.Component;
 @Component(dependencies = AppComponent.class)
 public interface BaseDataManagerComponent {
 
-
-    void inject(DataManager_Base base);
+    void inject(DataManager_Base datamanager);
 
 }

@@ -1,9 +1,16 @@
-package com.doulala.android.base.ui;
+package com.doulala.android.base.ui.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+
+import com.doulala.android.base.ui.activity.Activity_UI_Base;
+import com.doulala.android.base.ui.activity.BaseUIActivityComponent;
+import com.doulala.library.manager.storage.ValueStorageManager;
+import com.doulala.library.view.toast.IToastManager;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -13,12 +20,27 @@ import butterknife.Unbinder;
  */
 public class Fragment_Base extends Fragment {
 
-    private Activity_UI_Base activity;
+    Activity_UI_Base activity;
+    private BaseFragmentComponent baseFragmentComponent;
+
+    @Inject
+    protected IToastManager toastManager;
+
+    @Inject
+    protected ValueStorageManager valueStorageManager;
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity= (Activity_UI_Base) context;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        activity = (Activity_UI_Base) getActivity();
+        inject();
+        boolean check = valueStorageManager == null;
     }
 
     public Activity_UI_Base UIActivity() {
@@ -37,9 +59,6 @@ public class Fragment_Base extends Fragment {
         unbindButterKnife();
     }
 
-
-
-
     //region ButterKnife 组件
     private Unbinder unbinder;
 
@@ -56,7 +75,9 @@ public class Fragment_Base extends Fragment {
     }
     //endregion
 
-
-
+    private void inject() {
+        baseFragmentComponent = DaggerBaseFragmentComponent.builder().baseUIActivityComponent(activity.component()).build();
+        baseFragmentComponent.inject(this);
+    }
 
 }
