@@ -46,8 +46,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		ex.printStackTrace();
 
 		//TODO 添加你的逻辑
-
-		android.os.Process.killProcess(android.os.Process.myPid());
+        //android.os.Process.killProcess(android.os.Process.myPid());
 	}
 
 
