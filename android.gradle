@@ -19,6 +19,10 @@ ext {
             //architecture
             rxjava               : "io.reactivex:rxjava:1.1.6",
             rxandroid            : "io.reactivex:rxandroid:1.2.1",
+            otto                 : "com.squareup:otto:+",
+            rxbus                : "com.hwangjr.rxbus:rxbus:1.0.3",
+            eventbus             : "org.greenrobot:eventbus:3.0.0",
+
 
             butterknife_compiler : "com.jakewharton:butterknife:8.1.0",
             butterknife_apt      : "com.jakewharton:butterknife-compiler:8.1.0",
