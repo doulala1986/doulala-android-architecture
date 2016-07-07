@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.doulala.android.R;
 import com.doulala.android.base.ui.fragment.Fragment_Base;
+import com.doulala.android.model.user.Account;
+
+import javax.inject.Inject;
 
 /**
  * Created by doulala on 16/7/6.
@@ -15,6 +18,9 @@ import com.doulala.android.base.ui.fragment.Fragment_Base;
 public class Fragment_Sub extends Fragment_Base {
 
     View view;
+
+    @Inject
+    Account account;
 
     @Nullable
     @Override
@@ -32,7 +38,14 @@ public class Fragment_Sub extends Fragment_Base {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toastManager.show("123");
+        boolean isAccountNull = account == null;
     }
-
-
+    /**
+     * 重写inject完成具体组件的注入
+     */
+    @Override
+    protected void inject() {
+        super.inject();
+        component().fragment_sub().inject(this);
+    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
 import com.doulala.android.application.crash.CrashHandler;
+import com.doulala.android.model.user.Account;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.squareup.leakcanary.LeakCanary;
 
@@ -23,6 +24,7 @@ public class DApplication extends MultiDexApplication {
 
     @Inject
     ValueStorageManager valueStorageManager;
+
 
 
     @Override
@@ -60,4 +62,23 @@ public class DApplication extends MultiDexApplication {
     }
     //endregion
 
+
+
+    //region 用户帐号
+    private Account account=new Account();
+
+    /**
+     * @param account 当前的账户信息
+     *
+     */
+    public void setAccount(Account account){
+
+        this.account=account;
+
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+    //endregion
 }

@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.doulala.android.base.ui.activity.Activity_UI_Base;
 import com.doulala.android.base.ui.activity.BaseUIActivityComponent;
+import com.doulala.android.model.user.Account;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.doulala.library.view.toast.IToastManager;
 
@@ -20,7 +21,9 @@ import butterknife.Unbinder;
  */
 public class Fragment_Base extends Fragment {
 
-    Activity_UI_Base activity;
+    private Activity_UI_Base activity;
+
+
     private BaseFragmentComponent baseFragmentComponent;
 
     @Inject
@@ -41,9 +44,10 @@ public class Fragment_Base extends Fragment {
         activity = (Activity_UI_Base) getActivity();
         inject();
         boolean check = valueStorageManager == null;
+
     }
 
-    public Activity_UI_Base UIActivity() {
+    public Activity_UI_Base activity() {
         return activity;
     }
 
@@ -75,9 +79,15 @@ public class Fragment_Base extends Fragment {
     }
     //endregion
 
-    private void inject() {
+
+    protected void inject() {
         baseFragmentComponent = DaggerBaseFragmentComponent.builder().baseUIActivityComponent(activity.component()).build();
         baseFragmentComponent.inject(this);
     }
+
+    protected BaseFragmentComponent component() {
+        return baseFragmentComponent;
+    }
+
 
 }

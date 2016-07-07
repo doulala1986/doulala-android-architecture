@@ -1,6 +1,9 @@
 package com.doulala.android.base.ui.fragment;
+
+import com.doulala.android.base.di.FragmentComponents;
 import com.doulala.android.base.di.FragmentScope;
 import com.doulala.android.base.ui.activity.BaseUIActivityComponent;
+import com.doulala.android.model.user.Account;
 
 import dagger.Component;
 
@@ -10,7 +13,11 @@ import dagger.Component;
 
 @FragmentScope
 @Component(dependencies = {BaseUIActivityComponent.class})
-public interface BaseFragmentComponent {
+public
+interface BaseFragmentComponent extends FragmentComponents {
+
+
+    Account account();
 
     void inject(Fragment_Base fragment);
 

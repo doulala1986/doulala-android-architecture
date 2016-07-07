@@ -3,6 +3,7 @@ package com.doulala.android.application;
 import android.content.Context;
 
 import com.doulala.android.base.di.ActivityScope;
+import com.doulala.android.model.user.Account;
 import com.doulala.library.manager.storage.ValueStorageManager;
 
 import javax.inject.Singleton;
@@ -34,5 +35,12 @@ public class AppModule {
     @Singleton
     public Context provideContext() {
         return application;
+    }
+
+
+    @Provides
+    @Singleton
+    public Account provideAccount() {
+        return application.getAccount();
     }
 }

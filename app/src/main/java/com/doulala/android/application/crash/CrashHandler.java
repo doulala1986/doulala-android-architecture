@@ -48,5 +48,4 @@ public class CrashHandler implements UncaughtExceptionHandler {
 		//TODO 添加你的逻辑
         //android.os.Process.killProcess(android.os.Process.myPid());
 	}
-
 }
