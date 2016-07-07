@@ -10,6 +10,8 @@ import com.doulala.android.R;
 import com.doulala.android.base.ui.activity.Activity_UI_Base;
 import com.doulala.android.base.ui.fragment.Fragment_Base;
 import com.doulala.android.model.user.Account;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -32,12 +34,16 @@ public class Activity_Login extends Activity_UI_Base {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Fragment_Sub fragment_sub = new Fragment_Sub();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.layout, fragment_sub);
         transaction.addToBackStack(null);
         transaction.commit();
+//        Account newAccount = new Account();
+//        newAccount.update(this);
     }
+
 
     /**
      * 重写inject完成具体组件的注入
@@ -48,8 +54,10 @@ public class Activity_Login extends Activity_UI_Base {
         component().activity_login_component().inject(this);
     }
 
+    @Subscribe(tags = {@Tag(Account.RXBUS_TAG_ACCOUNT_UPDATED)})
+    public void onFindAccountUpdated(Account newAccount){
 
+        Log.e("onFindAccountUpdated","onFindAccountUpdated");
 
-
-
+    }
 }

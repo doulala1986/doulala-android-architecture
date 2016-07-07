@@ -3,7 +3,6 @@ package com.doulala.android.model.user;
 import android.content.Context;
 
 import com.doulala.android.application.DApplication;
-import com.hwangjr.rxbus.RxBus;
 
 import org.parceler.Parcel;
 

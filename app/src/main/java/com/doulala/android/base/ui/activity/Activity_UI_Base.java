@@ -7,6 +7,10 @@ import android.util.Log;
 import com.doulala.android.application.DApplication;
 import com.doulala.android.model.user.Account;
 import com.doulala.library.view.toast.IToastManager;
+import com.hwangjr.rxbus.RxBus;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
+import com.hwangjr.rxbus.thread.EventThread;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -20,15 +24,20 @@ public class Activity_UI_Base extends Activity_Base {
 
     private BaseUIActivityComponent baseUIActivityComponent;
 
-
     @Inject
     protected IToastManager toastManager;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject();
+        registRxbus();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregistRxbus();
     }
 
     protected void inject() {
@@ -42,15 +51,40 @@ public class Activity_UI_Base extends Activity_Base {
         return baseUIActivityComponent;
     }
 
-    //region (Deprecated)  可以使用这个方式动态获取实时的Account对象,Dagger Style.
+    //region Rxbus Register
+    private void registRxbus() {
+
+        RxBus.get().register(Activity_UI_Base.this);
+
+    }
+
+    private void unregistRxbus() {
+
+        RxBus.get().unregister(Activity_UI_Base.this);
+
+    }
+    //endregion
+
+    //region Account Getter
+
+
+    //region (Deprecated)  可以使用这个方式获取实时的Account对象,Dagger Style.
     @Inject
     Provider<Account> account_dagger_inject;
 
     @Deprecated
-    protected Account getAccount() {
+    protected Account getAccountByDaggerStyle() {
         return account_dagger_inject.get();
     }
     //endregion
 
+    private Account account;
+
+    protected Account getAccount(){
+
+        return account;
+    }
+
+    //endregion
 
 }

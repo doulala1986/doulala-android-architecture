@@ -8,9 +8,12 @@ import com.doulala.android.application.crash.CrashHandler;
 import com.doulala.android.model.user.Account;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.hwangjr.rxbus.RxBus;
+import com.hwangjr.rxbus.annotation.Produce;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
+import com.hwangjr.rxbus.thread.EventThread;
 import com.squareup.leakcanary.LeakCanary;
+
 
 import javax.inject.Inject;
 
@@ -36,13 +39,13 @@ public class DApplication extends MultiDexApplication {
         inject();
         initMemoryDetector();
         initError();
-        registerRxbus();
+        registRxbus();
     }
 
     @Override
     public void onTerminate() {
         super.onTerminate();
-        unregisterRxbus();
+        unregistRxbus();
     }
 
     //region DI
@@ -74,17 +77,18 @@ public class DApplication extends MultiDexApplication {
     //endregion
 
 
-    private void registerRxbus() {
-
+    //region Rxbus Register
+    private void registRxbus() {
         RxBus.get().register(DApplication.this);
 
     }
 
-    private void unregisterRxbus() {
+    private void unregistRxbus() {
 
         RxBus.get().unregister(DApplication.this);
 
     }
+    //endregion
 
 
     //region 用户帐号,通过Rxbus进行刷新
@@ -92,14 +96,16 @@ public class DApplication extends MultiDexApplication {
 
     public void AccountUpdate(Account account) {
 
-        if(account==null)
-            account=Account.NULL;
+        if (account == null)
+            account = Account.NULL;
         this.account = account;
-        Log.e("update account",account.toString());
-        RxBus.get().post(Account.RXBUS_TAG_ACCOUNT_UPDATED, this.account);
+        Log.e("update account", account.toString());
+        RxBus.get().post(Account.RXBUS_TAG_ACCOUNT_UPDATED, account);
     }
 
-    protected Account getAccount() {
+
+    @Produce(thread = EventThread.IMMEDIATE, tags = {@Tag(Account.RXBUS_TAG_ACCOUNT_UPDATED)})
+    public Account getAccount() {
         return account;
     }
 

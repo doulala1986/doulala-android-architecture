@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hwangjr.rxbus.RxBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -17,6 +19,11 @@ import butterknife.Unbinder;
 
  class Activity_Base extends AppCompatActivity {
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
@@ -59,5 +66,7 @@ import butterknife.Unbinder;
         }
     }
     //endregion
+
+
 
 }
