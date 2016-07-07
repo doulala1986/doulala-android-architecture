@@ -42,17 +42,15 @@ public class Activity_UI_Base extends Activity_Base {
         return baseUIActivityComponent;
     }
 
-
-/*
-
-    //可以使用这个方式动态获取实时的Account对象,Dagger Style.
+    //region (Deprecated)  可以使用这个方式动态获取实时的Account对象,Dagger Style.
     @Inject
-    Provider<Account> account;
+    Provider<Account> account_dagger_inject;
 
+    @Deprecated
     protected Account getAccount() {
-        return account.get();
+        return account_dagger_inject.get();
     }
-*/
+    //endregion
 
 
 }
