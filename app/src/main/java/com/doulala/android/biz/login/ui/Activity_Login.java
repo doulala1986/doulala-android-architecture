@@ -3,6 +3,7 @@ package com.doulala.android.biz.login.ui;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.doulala.android.R;
@@ -11,8 +12,10 @@ import com.doulala.android.base.ui.fragment.Fragment_Base;
 import com.doulala.android.model.user.Account;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.BindView;
+import dagger.Lazy;
 
 /**
  * Created by doulala on 16/7/6.
@@ -24,21 +27,17 @@ public class Activity_Login extends Activity_UI_Base {
 
     Fragment_Sub fragment_sub;
 
-    @Inject
-    Account account;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        new Account().update(this);
         Fragment_Sub fragment_sub = new Fragment_Sub();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.layout, fragment_sub);
         transaction.addToBackStack(null);
         transaction.commit();
-        boolean isAccountNull = account == null;
+
     }
 
     /**

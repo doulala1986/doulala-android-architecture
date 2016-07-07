@@ -37,10 +37,4 @@ public class AppModule {
         return application;
     }
 
-
-    @Provides
-    @Singleton
-    public Account provideAccount() {
-        return application.getAccount();
-    }
 }

@@ -3,9 +3,8 @@ package com.doulala.android.model.user;
 import android.content.Context;
 
 import com.doulala.android.application.DApplication;
-
+import com.hwangjr.rxbus.RxBus;
 import org.parceler.Parcel;
-
 import java.util.ArrayList;
 
 /**
@@ -19,18 +18,24 @@ import java.util.ArrayList;
 @Parcel
 public class Account {
 
+    public static final String RXBUS_TAG_ACCOUNT_UPDATED = "RXBUS_TAG_ACCOUNT_UPDATED";
+
+    public static final Account NULL=new Account();//设置一个对象代表未登录状态
+
+
     protected String userId;
 
     protected String name;
 
     protected String token;
 
+    protected long time_login;
+
     protected ArrayList<String> permissions;
 
     protected ArrayList<Module> modules;
 
     public Account() {
-
 
     }
 
@@ -74,17 +79,23 @@ public class Account {
         this.modules = modules;
     }
 
-    /**
-     * @param context
-     *
-     *
-     *
-     */
-    public void update(Context context) {
+    public long getTime_login() {
+        return time_login;
+    }
 
-        DApplication.get(context).setAccount(this);
-
+    public void setTime_login(long time_login) {
+        this.time_login = time_login;
     }
 
 
+    /**
+     * @param context 更新App登录账户信息
+     */
+    public void update(Context context) {
+        DApplication.get(context).AccountUpdate(this);
+    }
+
+    public static void clear(Context context){
+        Account.NULL.update(context);
+    }
 }

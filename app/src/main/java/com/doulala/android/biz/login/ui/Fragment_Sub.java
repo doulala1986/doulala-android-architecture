@@ -11,6 +11,10 @@ import com.doulala.android.base.ui.fragment.Fragment_Base;
 import com.doulala.android.model.user.Account;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
+
+import dagger.Lazy;
+import dagger.Provides;
 
 /**
  * Created by doulala on 16/7/6.
@@ -18,9 +22,6 @@ import javax.inject.Inject;
 public class Fragment_Sub extends Fragment_Base {
 
     View view;
-
-    @Inject
-    Account account;
 
     @Nullable
     @Override
@@ -38,7 +39,6 @@ public class Fragment_Sub extends Fragment_Base {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toastManager.show("123");
-        boolean isAccountNull = account == null;
     }
     /**
      * 重写inject完成具体组件的注入

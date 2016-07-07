@@ -27,8 +27,6 @@ public interface BaseUIActivityComponent extends ActivityComponents {
     **/
     ValueStorageManager valueStorageManager();
 
-    Account account();
-
     IToastManager toastManager();
 
     void inject(Activity_UI_Base activity);

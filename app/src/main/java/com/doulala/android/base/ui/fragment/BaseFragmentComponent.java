@@ -16,9 +16,6 @@ import dagger.Component;
 public
 interface BaseFragmentComponent extends FragmentComponents {
 
-
-    Account account();
-
     void inject(Fragment_Base fragment);
 
 }
