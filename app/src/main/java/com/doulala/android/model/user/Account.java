@@ -4,7 +4,9 @@ import android.content.Context;
 
 import com.doulala.android.application.DApplication;
 import com.hwangjr.rxbus.RxBus;
+
 import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
@@ -20,7 +22,7 @@ public class Account {
 
     public static final String RXBUS_TAG_ACCOUNT_UPDATED = "RXBUS_TAG_ACCOUNT_UPDATED";
 
-    public static final Account NULL=new Account();//设置一个对象代表未登录状态
+    public static final Account NULL = new Account();//设置一个对象代表未登录状态
 
 
     protected String userId;
@@ -95,7 +97,12 @@ public class Account {
         DApplication.get(context).AccountUpdate(this);
     }
 
-    public static void clear(Context context){
+    public static void clear(Context context) {
         Account.NULL.update(context);
+    }
+
+    public static boolean isNull(Account account) {
+        return account == null || account == Account.NULL;
+
     }
 }

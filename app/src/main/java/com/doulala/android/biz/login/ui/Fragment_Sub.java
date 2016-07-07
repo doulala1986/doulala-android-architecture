@@ -2,6 +2,7 @@ package com.doulala.android.biz.login.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,10 @@ public class Fragment_Sub extends Fragment_Base {
 
     View view;
 
+
+    @Inject
+    Provider<Account> account;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class Fragment_Sub extends Fragment_Base {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toastManager.show("123");
+        Log.e("account in fragment",account.get().toString());
     }
     /**
      * 重写inject完成具体组件的注入

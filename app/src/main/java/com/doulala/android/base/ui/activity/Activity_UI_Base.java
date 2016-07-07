@@ -9,6 +9,7 @@ import com.doulala.android.model.user.Account;
 import com.doulala.library.view.toast.IToastManager;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 /**
  * Created by doulala on 16/7/5.
@@ -17,11 +18,12 @@ public class Activity_UI_Base extends Activity_Base {
 
     private static final String TAG = "Activity_UI_Base";
 
+    private BaseUIActivityComponent baseUIActivityComponent;
+
+
     @Inject
     protected IToastManager toastManager;
 
-
-    private BaseUIActivityComponent baseUIActivityComponent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,9 +43,16 @@ public class Activity_UI_Base extends Activity_Base {
     }
 
 
+/*
 
+    //可以使用这个方式动态获取实时的Account对象,Dagger Style.
+    @Inject
+    Provider<Account> account;
 
-
+    protected Account getAccount() {
+        return account.get();
+    }
+*/
 
 
 }

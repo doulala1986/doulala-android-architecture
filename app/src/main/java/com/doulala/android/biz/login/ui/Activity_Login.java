@@ -37,7 +37,6 @@ public class Activity_Login extends Activity_UI_Base {
         transaction.replace(R.id.layout, fragment_sub);
         transaction.addToBackStack(null);
         transaction.commit();
-
     }
 
     /**
@@ -48,4 +47,9 @@ public class Activity_Login extends Activity_UI_Base {
         super.inject();
         component().activity_login_component().inject(this);
     }
+
+
+
+
+
 }

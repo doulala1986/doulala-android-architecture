@@ -20,6 +20,8 @@ public interface AppComponent {
 
     ValueStorageManager valueStorageManager();
 
+    Account account();
+
     void inject(DApplication application);
 
 }

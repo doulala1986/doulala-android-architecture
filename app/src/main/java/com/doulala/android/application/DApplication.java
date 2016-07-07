@@ -99,5 +99,9 @@ public class DApplication extends MultiDexApplication {
         RxBus.get().post(Account.RXBUS_TAG_ACCOUNT_UPDATED, this.account);
     }
 
+    protected Account getAccount() {
+        return account;
+    }
+
     //endregion
 }
