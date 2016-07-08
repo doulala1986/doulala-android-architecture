@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.doulala.library.bus.RxbusActivity;
 import com.hwangjr.rxbus.RxBus;
 
 import butterknife.ButterKnife;
@@ -17,7 +18,7 @@ import butterknife.Unbinder;
  */
 
 
- class Activity_Base extends AppCompatActivity {
+ class Activity_Base extends RxbusActivity {
 
 
     @Override

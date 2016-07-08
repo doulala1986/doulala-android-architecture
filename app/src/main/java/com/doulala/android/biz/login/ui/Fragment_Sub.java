@@ -10,17 +10,19 @@ import android.view.ViewGroup;
 import com.doulala.android.R;
 import com.doulala.android.base.ui.fragment.Fragment_Base;
 import com.doulala.android.model.user.Account;
+import com.doulala.android.model.user.bus.AccountBus;
+import com.doulala.library.bus.Bus;
+import com.doulala.library.bus.LifeCycle;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
-import dagger.Lazy;
-import dagger.Provides;
-
 /**
  * Created by doulala on 16/7/6.
  */
-public class Fragment_Sub extends Fragment_Base {
+public class Fragment_Sub extends Fragment_Base{
 
     View view;
 
@@ -54,4 +56,12 @@ public class Fragment_Sub extends Fragment_Base {
         super.inject();
         component().fragment_sub().inject(this);
     }
+
+    @Bus()
+    protected AccountBus accountBus = new AccountBus(new AccountBus.Callback() {
+        @Override
+        public void accountUpdated(Account newAccount) {
+            Log.e("account in fragment",newAccount.toString());
+        }
+    });
 }

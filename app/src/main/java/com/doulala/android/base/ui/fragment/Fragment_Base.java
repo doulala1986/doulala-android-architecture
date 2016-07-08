@@ -8,8 +8,12 @@ import android.view.View;
 import com.doulala.android.base.ui.activity.Activity_UI_Base;
 import com.doulala.android.base.ui.activity.BaseUIActivityComponent;
 import com.doulala.android.model.user.Account;
+import com.doulala.library.bus.RxbusFragment;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.doulala.library.view.toast.IToastManager;
+import com.hwangjr.rxbus.RxBus;
+import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
 
 import javax.inject.Inject;
 
@@ -19,7 +23,7 @@ import butterknife.Unbinder;
 /**
  * Created by doulala on 16/7/5.
  */
-public class Fragment_Base extends Fragment {
+public abstract class Fragment_Base extends RxbusFragment {
 
     private Activity_UI_Base activity;
 
@@ -43,12 +47,23 @@ public class Fragment_Base extends Fragment {
         super.onActivityCreated(savedInstanceState);
         activity = (Activity_UI_Base) getActivity();
         inject();
-        boolean check = valueStorageManager == null;
 
     }
 
     public Activity_UI_Base activity() {
         return activity;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     @Override

@@ -1,11 +1,15 @@
 package com.doulala.android.base.ui.activity;
 
+import android.content.res.ObbInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.doulala.android.application.DApplication;
 import com.doulala.android.model.user.Account;
+import com.doulala.android.model.user.bus.AccountBus;
+import com.doulala.library.bus.Bus;
+import com.doulala.library.bus.LifeCycle;
 import com.doulala.library.view.toast.IToastManager;
 import com.hwangjr.rxbus.RxBus;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -31,13 +35,11 @@ public class Activity_UI_Base extends Activity_Base {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject();
-        registRxbus();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregistRxbus();
     }
 
     protected void inject() {
@@ -49,19 +51,6 @@ public class Activity_UI_Base extends Activity_Base {
 
     public BaseUIActivityComponent component() {
         return baseUIActivityComponent;
-    }
-
-    //region Rxbus Register
-    private void registRxbus() {
-
-        RxBus.get().register(Activity_UI_Base.this);
-
-    }
-
-    private void unregistRxbus() {
-
-        RxBus.get().unregister(Activity_UI_Base.this);
-
     }
     //endregion
 
@@ -78,13 +67,28 @@ public class Activity_UI_Base extends Activity_Base {
     }
     //endregion
 
+
+    @Bus(life = LifeCycle.onCreate)
+    protected AccountBus accountBus = new AccountBus(new AccountBus.Callback() {
+        @Override
+        public void accountUpdated(Account newAccount) {
+            onFindAccountUpdated(newAccount);
+        }
+    });
+
+    protected void onFindAccountUpdated(Account newAccount) {
+        this.account = newAccount;
+    }
+
     private Account account;
 
-    protected Account getAccount(){
+    protected Account getAccount() {
 
         return account;
     }
 
+
+    //endregion
     //endregion
 
 }
