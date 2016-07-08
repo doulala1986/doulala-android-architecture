@@ -43,21 +43,16 @@ public class Activity_UI_Base extends Activity_Base {
     }
 
     protected void inject() {
-
         baseUIActivityComponent = DaggerBaseUIActivityComponent.builder().appComponent(DApplication.get(Activity_UI_Base.this).getAppComponent()).baseUIActivityModule(new BaseUIActivityModule(Activity_UI_Base.this)).build();
         baseUIActivityComponent.inject(this);
-
     }
 
     public BaseUIActivityComponent component() {
         return baseUIActivityComponent;
     }
-    //endregion
-
-    //region Account Getter
 
 
-    //region (Deprecated)  可以使用这个方式获取实时的Account对象,Dagger Style.
+    //region (Deprecated)  使用Dagger技术实时获取实时的Account对象,.
     @Inject
     Provider<Account> account_dagger_inject;
 
@@ -67,28 +62,37 @@ public class Activity_UI_Base extends Activity_Base {
     }
     //endregion
 
+    //region 使用Rxbus技术获取Account对象,监听Account变化.
+    private Account account;
 
     @Bus(life = LifeCycle.onCreate)
     protected AccountBus accountBus = new AccountBus(new AccountBus.Callback() {
         @Override
         public void accountUpdated(Account newAccount) {
+            setAccount(newAccount);
             onFindAccountUpdated(newAccount);
         }
     });
 
-    protected void onFindAccountUpdated(Account newAccount) {
-        this.account = newAccount;
-    }
-
-    private Account account;
 
     protected Account getAccount() {
 
         return account;
     }
 
+    private void setAccount(Account newAccount){
+        this.account=newAccount;
+    }
 
+    /**
+     *
+     * 业务子组件可以重写该方法来捕获Account更新事件
+     *  @param newAccount
+     */
+    protected void onFindAccountUpdated(Account newAccount) {
+
+    }
     //endregion
-    //endregion
+
 
 }
