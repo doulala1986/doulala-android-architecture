@@ -1,14 +1,12 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.neenbedankt.android-apt'
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
     }
     buildTypes {
         release {
@@ -27,4 +25,8 @@ dependencies {
     compile libs.rxjava
     compile libs.rxandroid
     compile libs.rxbus
+
+
+    compile libs.butterknife_compiler
+    apt libs.butterknife_apt
 }

@@ -9,6 +9,8 @@ import dagger.Component;
 
 /**
  * Created by doulala on 16/7/6.
+ *
+ * Fragment的最上层Component
  */
 
 @FragmentScope
@@ -18,6 +20,6 @@ interface BaseFragmentComponent extends FragmentComponents {
 
     Account account();
 
-    void inject(Fragment_Base fragment);
+    void inject(Fragment_UI_Base fragment);
 
 }

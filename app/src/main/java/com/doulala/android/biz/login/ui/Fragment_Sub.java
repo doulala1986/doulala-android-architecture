@@ -8,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.doulala.android.R;
-import com.doulala.android.base.ui.fragment.Fragment_Base;
+import com.doulala.android.base.ui.fragment.Fragment_UI_Base;
 import com.doulala.android.model.user.Account;
 import com.doulala.android.model.user.bus.AccountBus;
 import com.doulala.library.bus.Bus;
-import com.doulala.library.bus.LifeCycle;
-import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -22,7 +19,7 @@ import javax.inject.Provider;
 /**
  * Created by doulala on 16/7/6.
  */
-public class Fragment_Sub extends Fragment_Base{
+public class Fragment_Sub extends Fragment_UI_Base {
 
     View view;
 

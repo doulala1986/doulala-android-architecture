@@ -6,6 +6,7 @@ import com.hwangjr.rxbus.annotation.Tag;
 
 /**
  * Created by doulala on 16/7/8.
+ * 用来快速的对Account监听的类,通过对AccountBus的实例添加@Bus标签就可以快速加载.
  */
 public class AccountBus {
 
@@ -30,6 +31,4 @@ public class AccountBus {
             this.callback.accountUpdated(newAccount);
         }
     }
-
-
 }
