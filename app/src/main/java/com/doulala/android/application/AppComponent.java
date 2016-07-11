@@ -21,14 +21,15 @@ import dagger.Component;
  *
  * DataComponent:对data特有对象的管理与传递,如ValueStoreageManager等
  *
+ * 这利用SubComponent的原因是因为这3个Component的scope又是一致的,如果同时依赖会产生问题.
+ *
+ *
  */
 
 
 @Singleton
 @Component(modules =AppModule.class)
 public interface AppComponent {
-
-
 
     UIComponent uiComponent();
 
