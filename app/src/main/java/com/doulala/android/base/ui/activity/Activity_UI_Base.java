@@ -1,20 +1,17 @@
 package com.doulala.android.base.ui.activity;
 
-import android.content.res.ObbInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.doulala.android.application.DApplication;
-import com.doulala.android.model.user.Account;
-import com.doulala.android.model.user.bus.AccountBus;
+import com.doulala.android.model.account.Account;
+import com.doulala.android.model.account.bus.AccountBus;
 import com.doulala.library.bus.Bus;
 import com.doulala.library.bus.LifeCycle;
+import com.doulala.library.manager.dialog.IDialogMananger;
+import com.doulala.library.manager.image.ImageCacheMananger;
+import com.doulala.library.manager.storage.ValueStorageManager;
 import com.doulala.library.view.toast.IToastManager;
-import com.hwangjr.rxbus.RxBus;
-import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
-import com.hwangjr.rxbus.thread.EventThread;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
@@ -28,13 +25,21 @@ public class Activity_UI_Base extends Activity_Base {
 
     private BaseUIActivityComponent baseUIActivityComponent;
 
+
     @Inject
     protected IToastManager toastManager;
+
+    @Inject
+    protected IDialogMananger dialogMananger;
+
+    @Inject
+    protected ImageCacheMananger imageCacheMananger;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         inject();
+        imageCacheMananger.cache();
     }
 
     @Override
@@ -43,7 +48,7 @@ public class Activity_UI_Base extends Activity_Base {
     }
 
     protected void inject() {
-        baseUIActivityComponent = DaggerBaseUIActivityComponent.builder().appComponent(DApplication.get(Activity_UI_Base.this).getAppComponent()).baseUIActivityModule(new BaseUIActivityModule(Activity_UI_Base.this)).build();
+        baseUIActivityComponent = DaggerBaseUIActivityComponent.builder().baseUIActivityModule(new BaseUIActivityModule(Activity_UI_Base.this)).appComponent(DApplication.get(Activity_UI_Base.this).getAppComponent()).uIComponent(DApplication.get(Activity_UI_Base.this).getAppComponent().uiComponent()).build();
         baseUIActivityComponent.inject(this);
     }
 
@@ -80,14 +85,14 @@ public class Activity_UI_Base extends Activity_Base {
         return account;
     }
 
-    private void setAccount(Account newAccount){
-        this.account=newAccount;
+    private void setAccount(Account newAccount) {
+        this.account = newAccount;
     }
 
     /**
-     *
      * 业务子组件可以重写该方法来捕获Account更新事件
-     *  @param newAccount
+     *
+     * @param newAccount
      */
     protected void onFindAccountUpdated(Account newAccount) {
 

@@ -45,9 +45,6 @@ public class MainActivity extends Activity_UI_Base
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        DataManager_Base dm = new DataManager_Base(MainActivity.this);
-        dm.login();
-
     }
 
     @Override

@@ -1,24 +1,14 @@
 package com.doulala.android.base.ui.fragment;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
 
 import com.doulala.android.base.ui.activity.Activity_UI_Base;
-import com.doulala.android.base.ui.activity.BaseUIActivityComponent;
-import com.doulala.android.model.user.Account;
-import com.doulala.library.bus.RxbusFragment;
+import com.doulala.library.manager.dialog.IDialogMananger;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.doulala.library.view.toast.IToastManager;
-import com.hwangjr.rxbus.RxBus;
-import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by doulala on 16/7/5.
@@ -37,7 +27,7 @@ public class Fragment_UI_Base extends Fragment_Base {
     protected IToastManager toastManager;
 
     @Inject
-    protected ValueStorageManager valueStorageManager;
+    protected IDialogMananger dialogMananger;
 
 
     @Override

@@ -1,6 +1,8 @@
 package com.doulala.android.base.ui.activity;
 
 import com.doulala.android.base.di.ActivityScope;
+import com.doulala.library.manager.dialog.DialogMananger;
+import com.doulala.library.manager.dialog.IDialogMananger;
 import com.doulala.library.view.toast.IToastManager;
 import com.doulala.library.view.toast.ToastManager;
 
@@ -22,13 +24,6 @@ public class BaseUIActivityModule {
         this.activity = activity;
     }
 
-    @Provides
-    @ActivityScope
-    IToastManager provideToastManager() {
-
-        return new ToastManager(this.activity);
-
-    }
 
     @Provides
     @ActivityScope
@@ -36,5 +31,18 @@ public class BaseUIActivityModule {
         return this.activity;
     }
 
+    @Provides
+    @ActivityScope
+    IToastManager provideToastManager() {
 
+        return new ToastManager(this.activity);
+
+    }
+    @Provides
+    @ActivityScope
+    IDialogMananger provideDialogMananger() {
+
+        return new DialogMananger(this.activity);
+
+    }
 }

@@ -1,6 +1,6 @@
-package com.doulala.android.model.user.bus;
+package com.doulala.android.model.account.bus;
 
-import com.doulala.android.model.user.Account;
+import com.doulala.android.model.account.Account;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 

@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 
 import com.doulala.android.R;
 import com.doulala.android.base.ui.fragment.Fragment_UI_Base;
-import com.doulala.android.model.user.Account;
-import com.doulala.android.model.user.bus.AccountBus;
+import com.doulala.android.model.account.Account;
+import com.doulala.android.model.account.bus.AccountBus;
 import com.doulala.library.bus.Bus;
 
 import javax.inject.Inject;
@@ -26,6 +26,11 @@ public class Fragment_Sub extends Fragment_UI_Base {
 
     @Inject
     Provider<Account> account;
+
+    @Inject
+    public Fragment_Sub() {
+
+    }
 
     @Nullable
     @Override
@@ -43,8 +48,9 @@ public class Fragment_Sub extends Fragment_UI_Base {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toastManager.show("123");
-        Log.e("account in fragment",account.get().toString());
+        Log.e("account in fragment", account.get().toString());
     }
+
     /**
      * 重写inject完成具体组件的注入
      */
@@ -58,7 +64,7 @@ public class Fragment_Sub extends Fragment_UI_Base {
     protected AccountBus accountBus = new AccountBus(new AccountBus.Callback() {
         @Override
         public void accountUpdated(Account newAccount) {
-            Log.e("account in fragment",newAccount.toString());
+            Log.e("account in fragment", newAccount.toString());
         }
     });
 }

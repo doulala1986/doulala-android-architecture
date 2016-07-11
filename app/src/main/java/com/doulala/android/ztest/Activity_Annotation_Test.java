@@ -2,8 +2,8 @@ package com.doulala.android.ztest;
 
 import android.util.Log;
 
-import com.doulala.android.model.user.Account;
-import com.doulala.android.model.user.bus.AccountBus;
+import com.doulala.android.model.account.Account;
+import com.doulala.android.model.account.bus.AccountBus;
 import com.doulala.library.bus.Bus;
 import com.doulala.library.bus.RxbusActivity;
 

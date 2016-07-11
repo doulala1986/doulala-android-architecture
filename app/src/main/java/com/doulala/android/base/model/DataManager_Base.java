@@ -11,7 +11,7 @@ import javax.inject.Inject;
 /**
  * Created by doulala on 16/7/5.
  */
-public class DataManager_Base {
+public abstract class DataManager_Base {
     private static final String TAG = "DataManager_Base";
 
     Context context;
@@ -24,13 +24,9 @@ public class DataManager_Base {
 
     public DataManager_Base(Context context) {
         this.context = context.getApplicationContext();
-        component = DaggerBaseDataManagerComponent.builder().appComponent(DApplication.get(context).getAppComponent()).build();
+        component = DaggerBaseDataManagerComponent.builder().appComponent(DApplication.get(context).getAppComponent()).dataComponent(DApplication.get(context).getAppComponent().dataComponent()).build();
         component.inject(this);
     }
 
-    public void login() {
-        Log.e(TAG, "login");
-        valueStorageManager.set("user", "liyao");
-    }
 
 }

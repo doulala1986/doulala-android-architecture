@@ -5,11 +5,11 @@ import android.support.multidex.MultiDexApplication;
 import android.util.Log;
 
 import com.doulala.android.application.crash.CrashHandler;
-import com.doulala.android.model.user.Account;
+import com.doulala.android.model.account.Account;
+import com.doulala.library.manager.image.ImageCacheMananger;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.hwangjr.rxbus.RxBus;
 import com.hwangjr.rxbus.annotation.Produce;
-import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
 import com.squareup.leakcanary.LeakCanary;
@@ -32,6 +32,8 @@ public class DApplication extends MultiDexApplication {
     @Inject
     ValueStorageManager valueStorageManager;
 
+    @Inject
+    ImageCacheMananger imageCacheMananger;
 
     @Override
     public void onCreate() {

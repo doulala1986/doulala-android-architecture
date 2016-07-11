@@ -1,4 +1,4 @@
-package com.doulala.android.model.user;
+package com.doulala.android.model.account;
 
 import android.content.Context;
 
