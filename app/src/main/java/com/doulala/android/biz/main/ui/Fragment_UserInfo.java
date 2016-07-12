@@ -1,4 +1,4 @@
-package com.doulala.android.biz.login.ui;
+package com.doulala.android.biz.main.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.doulala.android.R;
 import com.doulala.android.base.ui.fragment.Fragment_UI_Base;
+import com.doulala.android.biz.main.di.Module_Fragment_UserInfo;
+import com.doulala.android.biz.main.presenter.Presenter_Fragment_UserInfo;
 import com.doulala.android.model.account.Account;
 import com.doulala.android.model.account.bus.AccountBus;
 import com.doulala.library.bus.Bus;
@@ -19,17 +21,16 @@ import javax.inject.Provider;
 /**
  * Created by doulala on 16/7/6.
  */
-public class Fragment_Sub extends Fragment_UI_Base {
+public class Fragment_UserInfo extends Fragment_UI_Base implements Presenter_Fragment_UserInfo.View {
 
     View view;
 
 
     @Inject
-    Provider<Account> account;
+    Presenter_Fragment_UserInfo presenter;
 
-    @Inject
-    public Fragment_Sub() {
-
+    public Fragment_UserInfo() {
+        super();
     }
 
     @Nullable
@@ -48,7 +49,8 @@ public class Fragment_Sub extends Fragment_UI_Base {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         toastManager.show("123");
-        Log.e("account in fragment", account.get().toString());
+        presenter.start();
+
     }
 
     /**
@@ -57,7 +59,7 @@ public class Fragment_Sub extends Fragment_UI_Base {
     @Override
     protected void inject() {
         super.inject();
-        component().fragment_sub().inject(this);
+        component().fragment_userinfo(new Module_Fragment_UserInfo(Fragment_UserInfo.this)).inject(this);
     }
 
     @Bus()
@@ -67,4 +69,9 @@ public class Fragment_Sub extends Fragment_UI_Base {
             Log.e("account in fragment", newAccount.toString());
         }
     });
+
+    @Override
+    public void showToken(String token) {
+
+    }
 }

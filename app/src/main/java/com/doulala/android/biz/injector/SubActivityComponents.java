@@ -2,6 +2,7 @@ package com.doulala.android.biz.injector;
 
 import com.doulala.android.biz.login.di.Component_Activity_Login;
 import com.doulala.android.biz.login.di.Module_Activity_Login;
+import com.doulala.android.biz.main.di.Component_Activity_Main;
 
 /**
  * Created by doulala on 16/7/7.
@@ -12,4 +13,7 @@ import com.doulala.android.biz.login.di.Module_Activity_Login;
 public interface SubActivityComponents {
 
     Component_Activity_Login activity_login_component(Module_Activity_Login module);
+
+
+    Component_Activity_Main activity_main_component();
 }

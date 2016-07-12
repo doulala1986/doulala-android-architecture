@@ -1,5 +1,8 @@
 package com.doulala.android.base.ui.fragment;
 
+import android.content.Context;
+
+import com.doulala.android.base.di.ActivityContextQualifier;
 import com.doulala.android.biz.injector.DataManagersModule;
 import com.doulala.android.biz.injector.SubFragmentComponents;
 import com.doulala.android.base.di.FragmentScope;
@@ -16,7 +19,7 @@ import dagger.Component;
  */
 
 @FragmentScope
-@Component(dependencies = {BaseUIActivityComponent.class})
+@Component(dependencies = {BaseUIActivityComponent.class}, modules = {DataManagersModule.class})
 public interface BaseFragmentComponent extends SubFragmentComponents {
 
     Account account();

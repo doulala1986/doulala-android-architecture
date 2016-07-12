@@ -1,5 +1,8 @@
 package com.doulala.android.base.ui.activity;
 
+import android.content.Context;
+
+import com.doulala.android.base.di.ActivityContextQualifier;
 import com.doulala.android.base.di.ActivityScope;
 import com.doulala.library.manager.dialog.DialogMananger;
 import com.doulala.library.manager.dialog.IDialogMananger;
@@ -33,11 +36,20 @@ public class BaseUIActivityModule {
 
     @Provides
     @ActivityScope
+    @ActivityContextQualifier
+    Context provideActivityContext() {
+        return this.activity;
+    }
+
+
+    @Provides
+    @ActivityScope
     IToastManager provideToastManager() {
 
         return new ToastManager(this.activity);
 
     }
+
     @Provides
     @ActivityScope
     IDialogMananger provideDialogMananger() {

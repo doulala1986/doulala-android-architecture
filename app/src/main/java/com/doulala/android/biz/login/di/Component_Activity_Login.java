@@ -12,7 +12,7 @@ import dagger.Subcomponent;
 /**
  * Created by doulala on 16/7/7.
  */
-
+@ActivityScope
 @Subcomponent(modules = Module_Activity_Login.class)
 public interface Component_Activity_Login {
 

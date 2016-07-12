@@ -3,6 +3,7 @@ package com.doulala.android.model.account.datamanager;
 import android.content.Context;
 import android.util.Log;
 
+import com.doulala.android.base.di.ActivityContextQualifier;
 import com.doulala.android.base.model.DataManager_Base;
 import com.doulala.android.model.account.Account;
 
@@ -19,7 +20,6 @@ public class AccountDataManager extends DataManager_Base implements IAccountData
 
     private static final String PREFERENCE_ACCOUNT_TOKEN = "PREFERENCE_ACCOUNT_TOKEN";
 
-    @Inject
     public AccountDataManager(Context context) {
         super(context);
     }

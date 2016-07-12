@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.doulala.android.base.ui.activity.Activity_UI_Base;
 import com.doulala.library.manager.dialog.IDialogMananger;
+import com.doulala.library.manager.image.ImageCacheMananger;
 import com.doulala.library.manager.storage.ValueStorageManager;
 import com.doulala.library.view.toast.IToastManager;
 
@@ -29,6 +30,8 @@ public class Fragment_UI_Base extends Fragment_Base {
     @Inject
     protected IDialogMananger dialogMananger;
 
+    @Inject
+    protected ImageCacheMananger imageCacheMananger;
 
     @Override
     public void onAttach(Context context) {

@@ -1,6 +1,6 @@
 package com.doulala.android.biz.login.di;
 
-import com.doulala.android.biz.login.presenter.LoginPresenter;
+import com.doulala.android.biz.login.presenter.Presenter_Activity_Login;
 
 import dagger.Module;
 import dagger.Provides;
@@ -12,16 +12,16 @@ import dagger.Provides;
 @Module
 public class Module_Activity_Login {
 
-    private LoginPresenter.View view;
+    private Presenter_Activity_Login.View view;
 
-    public Module_Activity_Login(LoginPresenter.View view) {
+    public Module_Activity_Login(Presenter_Activity_Login.View view) {
 
         this.view=view;
 
     }
 
     @Provides
-    public  LoginPresenter.View providerView(){
+    public  Presenter_Activity_Login.View providerView(){
 
         return this.view;
 

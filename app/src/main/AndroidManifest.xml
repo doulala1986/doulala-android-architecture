@@ -17,6 +17,10 @@
         </activity>
         <activity
             android:name=".biz.login.ui.Activity_Login"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity
+            android:name=".biz.main.ui.Activity_Main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +28,6 @@
             </intent-filter>
 
         </activity>
-
         <activity android:name=".ztest.Activity_Annotation_Test">
 
         </activity>

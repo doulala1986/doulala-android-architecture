@@ -13,7 +13,7 @@ import rx.functions.Action1;
 /**
  * Created by doulala on 16/7/10.
  */
-public class LoginPresenter {
+public class Presenter_Activity_Login {
 
 
     public interface View {
@@ -25,13 +25,13 @@ public class LoginPresenter {
         void onLoginFailed(String message);
     }
 
-    private LoginPresenter.View view;
+    private Presenter_Activity_Login.View view;
 
     @Inject
     Lazy<IAccountDataManager> accountDataManager;
 
     @Inject
-    public LoginPresenter(Context context, LoginPresenter.View view) {
+    public Presenter_Activity_Login(Context context, Presenter_Activity_Login.View view) {
         super();
         this.view = view;
     }
