@@ -1,4 +1,5 @@
-# doulala-android-architecture
+# 基于Rxjava+Dagger2+Rxbus的MVP模式开发框架
+
 
 ## 架构图
 
