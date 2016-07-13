@@ -3,7 +3,8 @@
 ## 架构图
 
 依赖注入架构：
-![](http://doulala.oss-cn-qingdao.aliyuncs.com/Dependency%20Injection.png)
+
+![](http://doulala.oss-cn-qingdao.aliyuncs.com/di.png)
 
 **说明：**
 
