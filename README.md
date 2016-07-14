@@ -32,7 +32,7 @@
 ---
 
 MVP架构：
-![](http://doulala.oss-cn-qingdao.aliyuncs.com/mvp2.jpg)
+![](http://doulala.oss-cn-qingdao.aliyuncs.com/mvp3.jpg)
 
 **说明：**
 
