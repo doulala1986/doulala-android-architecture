@@ -10,6 +10,8 @@ import com.doulala.android.base.ui.activity.Activity_UI_Base;
 import com.doulala.android.biz.login.di.Module_Activity_Login;
 import com.doulala.android.biz.login.presenter.Presenter_Activity_Login;
 import com.doulala.android.model.account.Account;
+import com.doulala.android.model.account.bus.AccountBus;
+import com.doulala.library.bus.Bus;
 
 import javax.inject.Inject;
 
@@ -32,8 +34,18 @@ public class Activity_Login extends Activity_UI_Base implements Presenter_Activi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("Activity_Login","onResume");
+
+        presenter.login();
+    }
 
     /**
      * 重写inject完成具体组件的注入
@@ -50,8 +62,6 @@ public class Activity_Login extends Activity_UI_Base implements Presenter_Activi
         super.onFindAccountUpdated(newAccount);
         Log.e("onFindAccountUpdated in biz activity", newAccount.toString());
     }
-
-
 
 
     //region Presenter_Activity_Login.View
@@ -71,4 +81,12 @@ public class Activity_Login extends Activity_UI_Base implements Presenter_Activi
     }
 
     //endregion
+
+    @Bus
+    AccountBus accountBus = new AccountBus(new AccountBus.Callback() {
+        @Override
+        public void accountUpdated(Account newAccount) {
+            Log.e("account", newAccount.toString());
+        }
+    });
 }

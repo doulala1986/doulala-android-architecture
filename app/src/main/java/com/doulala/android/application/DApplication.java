@@ -101,7 +101,6 @@ public class DApplication extends MultiDexApplication {
         if (account == null)
             account = Account.NULL;
         this.account = account;
-        Log.e("update account", account.toString());
         RxBus.get().post(Account.RXBUS_TAG_ACCOUNT_UPDATED, account);
     }
 
