@@ -5,7 +5,7 @@
 
 依赖注入架构：
 
-![](http://doulala.oss-cn-qingdao.aliyuncs.com/di.png)
+![](http://doulala.oss-cn-qingdao.aliyuncs.com/di.jpg)
 
 **说明：**
 
@@ -32,7 +32,7 @@
 ---
 
 MVP架构：
-![](http://doulala.oss-cn-qingdao.aliyuncs.com/mvp.png)
+![](http://doulala.oss-cn-qingdao.aliyuncs.com/mvp.jpg)
 
 **说明：**
 
